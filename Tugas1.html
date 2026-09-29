@@ -1,0 +1,59 @@
+<!-- Revani - STTNF -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas1 Javascript - Menghitung Luas</title>
+</head>
+<body>
+    <h1>Perhitungan Luas Bangun Datar</h1>
+    <script>
+        // menghitung luas persegi panjang (panjang × lebar)
+        function luasPersegiPanjang(panjang, lebar) {
+            let luas = panjang * lebar;
+            return luas;
+        }
+
+        // menghitung luas bujur sangkar (sisi × sisi)
+        function luasBujurSangkar(sisi) {
+            let luas = sisi * sisi;
+            return luas;
+        }
+
+        // menghitung luas segitiga (1/2 × alas × tinggi)
+        function luasSegitiga(alas, tinggi) {
+            let luas = 0.5 * alas * tinggi;
+            return luas;
+        }
+
+        // nilai parameter untuk persegi panjang
+        let panjang = 10;
+        let lebar = 5;
+
+        // nilai parameter untuk bujur sangkar
+        let sisi = 6;
+
+        // nilai parameter untuk segitiga
+        let alas = 8;
+        let tinggi = 6;
+
+        // hasil perhitungan luas persegi panjang
+        document.write("<h2>Persegi Panjang (panjang × lebar)</h2>");
+        document.write("Panjang = " + panjang + "<br>");
+        document.write("Lebar = " + lebar + "<br>");
+        document.write("Luas Persegi Panjang = " + luasPersegiPanjang(panjang, lebar));
+
+        // hasil perhitungan luas bujur sangkar
+        document.write("<h2>Bujur Sangkar (sisi × sisi)</h2>");
+        document.write("Sisi = " + sisi + "<br>");
+        document.write("Luas Bujur Sangkar= " + luasBujurSangkar(sisi));
+
+        // hasil perhitungan luas segitiga
+        document.write("<h2>Segitiga (1/2 × alas × tinggi)</h2>");
+        document.write("Alas = " + alas + "<br>");
+        document.write("Tinggi = " + tinggi + "<br>");
+        document.write("Luas Segitiga= " + luasSegitiga(alas, tinggi));
+    </script>
+</body>
+</html>
