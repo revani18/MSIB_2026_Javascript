@@ -1,0 +1,132 @@
+<!-- Revani - STTNF -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas2 JavaScript - Data Pegawai</title>
+    <style>
+        body {
+            background-color: #ffe4ec;
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #c2185b;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff5f8;
+            box-shadow: 0 4px 10px rgba(194, 24, 91, 0.2);
+        }
+
+        th, td {
+            border: 1px solid #e08aaa;
+            padding: 12px;
+            text-align: center;
+        }
+
+        thead {
+            background-color: #e91e63;
+            color: white;
+        }
+
+        tbody {
+            background-color: #fff0f5;
+        }
+
+        tbody tr:hover {
+            background-color: #ffd1df;
+        }
+
+        tfoot {
+            background-color: #f48fb1;
+            color: #880e4f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Data Pegawai</h2>
+    <script>
+        // deklarasi dan inisialisasi
+        let nama = "Dodi Prayodi";
+        let umur = 25;
+        let jabatan = "Manajer";
+        let status = "Menikah";
+
+        // gaji pokok berdasarkan jabatan menggunakan IF
+        let gajiPokok;
+
+        if (jabatan == "Manajer") {
+            gajiPokok = 15000000;
+        } else if (jabatan == "Asisten Manajer") {
+            gajiPokok = 10000000;
+        } else if (jabatan == "Staff") {
+            gajiPokok = 5000000;
+        } else {
+            gajiPokok = 0;
+        }
+
+        // tunjangan jabatan sebesar 15% dari gaji pokok
+        let tunjanganJabatan = 15 / 100 * gajiPokok;
+
+        // BPJS sebesar 10% dari gaji pokok
+        let bpjs = 10 / 100 * gajiPokok;
+
+        // ternary jika status menikah, tunjangan keluarga = 20% dari gaji pokok
+        let tunjanganKeluarga = (status == "Menikah")
+            ? 20 / 100 * gajiPokok
+            : 0;
+
+        // menghitung total gaji
+        let totalGaji = gajiPokok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+
+
+        // tabel data pegawai
+        document.write("<table>");
+
+        // judul (THEAD)
+        document.write("<thead>");
+        document.write("<tr>");
+        document.write("<th>Nama Pegawai</th>");
+        document.write("<th>Umur</th>");
+        document.write("<th>Jabatan</th>");
+        document.write("<th>Status</th>");
+        document.write("<th>Gaji Pokok</th>");
+        document.write("<th>Tunjangan Jabatan</th>");
+        document.write("<th>BPJS</th>");
+        document.write("<th>Tunjangan Keluarga</th>");
+        document.write("</tr>");
+        document.write("</thead>");
+
+        // isi data (TBODY)
+        document.write("<tbody>");
+        document.write("<tr>");
+        document.write("<td>" + nama + "</td>");
+        document.write("<td>" + umur + " tahun</td>");
+        document.write("<td>" + jabatan + "</td>");
+        document.write("<td>" + status + "</td>");
+        document.write("<td>Rp " + gajiPokok.toLocaleString("id-ID") + "</td>");
+        document.write("<td>Rp " + tunjanganJabatan.toLocaleString("id-ID") + "</td>");
+        document.write("<td>Rp " + bpjs.toLocaleString("id-ID") + "</td>");
+        document.write("<td>Rp " + tunjanganKeluarga.toLocaleString("id-ID") + "</td>");
+        document.write("</tr>");
+        document.write("</tbody>");
+
+        // total gaji (TFOOT)
+        document.write("<tfoot>");
+        document.write("<tr>");
+        document.write("<th colspan='7'>Total Gaji</th>");
+        document.write("<th>Rp " + totalGaji.toLocaleString("id-ID") + "</th>");
+        document.write("</tr>");
+        document.write("</tfoot>");
+        document.write("</table>");
+    </script>
+</body>
+</html>
