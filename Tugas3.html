@@ -1,0 +1,163 @@
+<!-- Revani - STTNF -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas3 JavaScript</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #ffe6f0; 
+            margin: 0; 
+            padding: 30px; 
+        } 
+        h1 { 
+            text-align: center; 
+            color: #d63384; 
+            margin-bottom: 30px; 
+        } 
+        #daftarProduk { 
+            background-color: white; 
+            max-width: 900px; 
+            margin: auto; 
+            padding: 25px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 12px rgba(214, 51, 132, 0.15); 
+        } 
+        h2 { 
+            text-align: center; 
+            color: #c2185b; 
+        } 
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+            overflow: hidden; 
+            border-radius: 10px; 
+        } 
+        th { 
+            background-color: #f48fb1; 
+            color: white; 
+            padding: 12px; 
+        } 
+        td { 
+            padding: 12px; 
+            text-align: center; 
+            border-bottom: 1px solid #f8bbd0; 
+        } 
+        tr:nth-child(even) { 
+            background-color: #fff0f5; 
+        } 
+        tr:hover { 
+            background-color: #fce4ec; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistem Manajemen Pesanan (Toko Online)</h1>
+    <div id="daftarProduk"></div>
+    <script>
+        // data produk yang tersedia di toko
+        let produkToko = [
+            {
+                id: 1,
+                nama: "Laptop",
+                harga: 7000000,
+                stok: 5
+            },
+            {
+                id: 2,
+                nama: "Mouse",
+                harga: 200000,
+                stok: 10
+            },
+            {
+                id: 3,
+                nama: "Keyboard",
+                harga: 350000,
+                stok: 7
+            }
+        ];
+
+        // produk berdasarkan ID
+        function cariProduk(id) {
+            for (let i = 0; i < produkToko.length; i++) {
+                if (produkToko[i].id === id) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        // menambahkan produk baru ke dalam array
+        function tambahProduk(nama, harga, stok) {
+            let idBaru = 1;
+            if (produkToko.length > 0) {
+                idBaru = produkToko[produkToko.length - 1].id + 1;
+            }
+
+            let produkBaru = {
+                id: idBaru,
+                nama: nama,
+                harga: harga,
+                stok: stok
+            };
+            produkToko.push(produkBaru);
+        }
+
+        // menghapus produk berdasarkan ID
+        function hapusProduk(id) {
+            let indexProduk = cariProduk(id);
+            if (indexProduk !== -1) {
+                produkToko.splice(indexProduk, 1);
+            } else {
+                document.write(
+                    "<p>Produk dengan ID " + id +
+                    " tidak ditemukan.</p>"
+                );
+            }
+        }
+
+        // menampilkan seluruh data produk
+        function tampilkanProduk() {
+            let hasil = "";
+            hasil += "<h2>DAFTAR PRODUK</h2>";
+            hasil += "<table>";
+            hasil += "<tr>";
+            hasil += "<th>ID</th>";
+            hasil += "<th>Nama Produk</th>";
+            hasil += "<th>Harga</th>";
+            hasil += "<th>Stok</th>";
+            hasil += "</tr>";
+
+            for (let i = 0; i < produkToko.length; i++) {
+                hasil += "<tr>";
+                hasil += "<td>" +
+                    produkToko[i].id +
+                    "</td>";
+                hasil += "<td>" +
+                    produkToko[i].nama +
+                    "</td>";
+                hasil += "<td>Rp " +
+                    produkToko[i].harga.toLocaleString("id-ID") +
+                    "</td>";
+                hasil += "<td>" +
+                    produkToko[i].stok +
+                    "</td>";
+                hasil += "</tr>";
+            }
+            hasil += "</table>";
+            document.getElementById("daftarProduk").innerHTML = hasil;
+        }
+
+        // penggunaan sistem pemesanan
+        // menambahkan produk baru
+        tambahProduk("Headset", 150000, 8);
+        // menghapus produk dengan ID 2
+        hapusProduk(2)
+        // menampilkan data produk setelah perubahan
+        tampilkanProduk();
+    </script>
+</body>
+</html>
