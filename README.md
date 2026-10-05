@@ -4,17 +4,20 @@ ini adalah hasil tugas MSIB NFA 2026 Materi Javascript
 
 # Tugas 1
 Soal: Menghitung luas dari persegi panjang, bujur sangkar dan segitiga menggunakan variabel dan operator.
+
 Ketentuan:
 - Tulis kode JavaScript dalam 1 file HTML
 - Nilai dari parameter/argumen bebas (nilai sisi, panjang, tinggi)
 - Terdapat keterangan penjelasan berupa komentar tiap fungsi
+
 
 # Tugas 2
 Diketahui: 
 - Pegawai: dodi prayodi
 - Umur: 25 tahun
 - Jabatan: manajer
-- Status: menikah  
+- Status: menikah
+ 
 Tugas:
 - Cetak Data Pegawai berbentuk tabel: 
 - Judul Kolom gunakan thead 
@@ -28,6 +31,7 @@ Tugas:
 
 # Tugas 3
 Anda diminta untuk membuat sistem manajemen pesanan untuk sebuah toko online. Sistem ini akan menangani data produk, pelanggan, dan pesanan menggunakan fungsi dan array. Setiap bagian dari sistem saling berhubungan, seperti daftar produk yang tersedia, pelanggan yang melakukan pesanan, serta proses perhitungan total pembayaran. Sebuah toko memiliki daftar produk yang dijual, setiap produk memiliki informasi seperti id, nama, harga, dan stok. Toko harus bisa menambahkan produk baru, menampilkan daftar produk, dan menghapus produk yang sudah tidak dijual.
+
 Tugas:
 - Buat array produkToko yang menyimpan daftar produk dengan struktur seperti berikut:
 [
@@ -41,24 +45,28 @@ Tugas:
 
 # Tugas 4
 Anda diminta untuk membuat Sistem Manajemen Transportasi menggunakan konsep Object-Oriented Programming (OOP) dalam JavaScript. Sistem ini akan mencakup berbagai jenis kendaraan yang memiliki perilaku dan karakteristik yang berbeda.
+
 - Perusahaan ingin mencatat data pelanggan yang menyewa kendaraan.
   - Setiap pelanggan memiliki nama, nomor telepon, dan kendaraan yang disewa.
   - Sistem harus bisa menampilkan daftar pelanggan yang sedang menyewa kendaraan.
+
 Tugas:
 - Buat class Pelanggan dengan properti nama, nomorTelepon, dan kendaraanDisewa.
 - Tambahkan metode untuk mencatat transaksi penyewaan kendaraan oleh pelanggan.
 - Buat sistem yang menampilkan daftar pelanggan yang sedang menyewa kendaraan.
 
 # Tugas 5
-Tugas 5 JS
-Sebuah toko online ingin mengembangkan fitur manajemen produk berbasis JavaScript. Fitur
-ini mencakup:
+Sebuah toko online ingin mengembangkan fitur manajemen produk berbasis JavaScript. 
+
+Fitur ini mencakup:
 • List data produk awal minimal 5
 • Menambahkan Produk
 • Menghapus Produk
 • Menampilkan Semua Produk
+
 Aplikasi ini akan menggunakan Event Listener, Destructuring, Spread Operator, dan Rest
 Parameter untuk meningkatkan efisiensi dan fleksibilitas kode.
+
 Contoh kode yang harus dilengkapi:
 <img width="820" height="400" alt="image" src="https://github.com/user-attachments/assets/3ef9a73f-6acd-4f47-8284-425ca00b4bd6" />
 
