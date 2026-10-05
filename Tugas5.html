@@ -1,0 +1,294 @@
+<!-- Revani - STTNF -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 5 JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(214, 51, 132, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+
+        .deskripsi {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .form-produk {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #f3a6c4;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #d63384;
+        }
+
+        button {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #btnTambah {
+            background-color: #d63384;
+            color: white;
+        }
+
+        #btnTambah:hover {
+            background-color: #b82b6f;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background-color: #f48fb1;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #f8bbd0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fff5f8;
+        }
+
+        .btn-hapus {
+            background-color: #f8bbd0;
+            color: #8e2450;
+        }
+
+        .btn-hapus:hover {
+            background-color: #f48fb1;
+            color: white;
+        }
+
+        .pesan {
+            text-align: center;
+            color: #d63384;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 700px) {
+            .form-produk {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Toko Online</h1>
+        <p class="deskripsi">Manajemen Produk</p>
+
+        <!-- form menambahkan produk -->
+        <div class="form-produk">
+            <input type="text" id="namaProduk" placeholder="Nama Produk">
+            <input type="number" id="hargaProduk" placeholder="Harga">
+            <input type="number" id="stokProduk" placeholder="Stok">
+            <button id="btnTambah">Tambah Produk</button>
+        </div>
+
+        <!-- menampilkan produk -->
+        <div id="daftarProduk"></div>
+        <p id="pesan" class="pesan"></p>
+    </div>
+
+    <script>
+        // data produk awal
+        const produkList = [
+            {
+                id: 1,
+                nama: "Laptop",
+                harga: 12000000,
+                stok: 5
+            },
+            {
+                id: 2,
+                nama: "Smartphone",
+                harga: 5000000,
+                stok: 8
+            },
+            {
+                id: 3,
+                nama: "Tablet",
+                harga: 3000000,
+                stok: 7
+            },
+            {
+                id: 4,
+                nama: "Keyboard",
+                harga: 350000,
+                stok: 10
+            },
+            {
+                id: 5,
+                nama: "Mouse",
+                harga: 200000,
+                stok: 15
+            }
+        ];
+
+        // Spread Operator
+        let daftarProduk = [...produkList];
+
+        // fungsi tambah produk
+        // Rest Parameter
+        function tambahProduk(...produkBaru) {
+            daftarProduk = [...daftarProduk,...produkBaru];
+            // menampilkan daftar produk terbaru
+            tampilkanProduk();
+            // menampilkan pesan berhasil
+            alert("Produk berhasil ditambahkan!");
+        }
+
+        // fungsi hapus produk
+        function hapusProduk(id) {
+            let indexProduk = -1;
+            // mencari index produk berdasarkan ID
+            for (let i = 0; i < daftarProduk.length; i++) {
+                if (daftarProduk[i].id === id) {
+                    indexProduk = i;
+                    break;
+                }
+            }
+
+            if (indexProduk !== -1) {
+                // konfirmasi sebelum menghapus
+                let yakin = confirm(
+                    "Apakah Anda yakin ingin menghapus produk ini?"
+                );
+                // jika pengguna memilih OK
+                if (yakin) {
+                    daftarProduk.splice(indexProduk, 1);
+                    // menampilkan daftar terbaru
+                    tampilkanProduk();
+                    // menampilkan pesan berhasil
+                    alert("Produk berhasil dihapus!");
+                }
+            }
+        }
+
+        // fungsi tampil produk
+        function tampilkanProduk() {
+            let hasil = "";
+            hasil += "<h2>Daftar Produk</h2>";
+            hasil += `
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama Produk</th>
+                        <th>Harga</th>
+                        <th>Stok</th>
+                        <th>Aksi</th>
+                    </tr>
+            `;
+            // Destructuring
+            for (const { id, nama, harga, stok } of daftarProduk) {
+                hasil += `
+                    <tr>
+                        <td>${id}</td>
+                        <td>${nama}</td>
+                        <td>Rp ${harga.toLocaleString("id-ID")}</td>
+                        <td>${stok}</td>
+                        <td><button class="btn-hapus" data-id="${id}">Hapus</button></td>
+                    </tr>
+                `;
+            }
+            hasil += "</table>";
+
+            // menampilkan hasil ke halaman
+            document.getElementById("daftarProduk").innerHTML = hasil;
+        }
+
+        // event listener tambah produk
+        document.getElementById("btnTambah").addEventListener("click", function () {
+            // mengambil nilai
+            let nama = document.getElementById("namaProduk").value;
+            let harga = Number(document.getElementById("hargaProduk").value);
+            let stok = Number(document.getElementById("stokProduk").value);
+
+            // validasi input
+            if (nama === "" || harga <= 0 || stok <= 0) {
+                alert("Silakan isi nama, harga, dan stok dengan benar.");
+                return;
+            }
+
+            // id prooduk baru
+            let idBaru = 1;
+            if (daftarProduk.length > 0) {
+                idBaru = daftarProduk[daftarProduk.length - 1].id + 1;
+            }
+
+            // object produk baru
+            const produkBaru = {
+                id: idBaru,
+                nama: nama,
+                harga: harga,
+                stok: stok
+            };
+
+            // fungsi tambahProduk
+            tambahProduk(produkBaru);
+
+            // kosong input setelah produk ditambahkan
+            document.getElementById("namaProduk").value = "";
+            document.getElementById("hargaProduk").value = "";
+            document.getElementById("stokProduk").value = "";
+        });
+
+
+        // event delegation untuk hapus
+        document.getElementById("daftarProduk").addEventListener("click", function (event) {
+            if (event.target.matches(".btn-hapus")) {
+                let id = Number(
+                    event.target.getAttribute("data-id")
+                );
+                hapusProduk(id);
+            }
+        });
+        
+        // menampilkan produk
+        tampilkanProduk();
+    </script>
+</body>
+</html>
