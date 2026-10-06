@@ -71,3 +71,8 @@ Contoh kode yang harus dilengkapi:
 <img width="820" height="400" alt="image" src="https://github.com/user-attachments/assets/3ef9a73f-6acd-4f47-8284-425ca00b4bd6" />
 
 # Tugas 6
+- Terdapat  file data.js didalamnya ada 10 Data dideklarasikan dengan Array of Object (nama, umur, alamat, email)
+- Selanjutnya file controller.js yang berisi 3 perintah ( Melihat, Menambah dan menghapus data)
+- Tambahkan minimal 2 data pada proses push
+- Tampilkan data menggunakan map()
+<img width="1142" height="661" alt="image" src="https://github.com/user-attachments/assets/605d691a-fc17-4fae-9e8d-9b3556ecb7cc" />
